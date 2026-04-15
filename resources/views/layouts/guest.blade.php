@@ -18,6 +18,9 @@
             <div class="auth-links">
                 <a href="{{ route('login') }}" class="btn btn-link text-decoration-none text-dark me-2">Accedi</a>
                 <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-4">Registrati</a>
+                @if(Auth::check())
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-link text-decoration-none text-dark me-2">Admin</a>
+                @endif
             </div>
         </div>
     </nav>
