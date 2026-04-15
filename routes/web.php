@@ -5,7 +5,7 @@ use App\Http\Controllers\Guest\WelcomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 
 
