@@ -16,10 +16,13 @@
             </a>
 
             <div class="auth-links">
+                @if(Auth::check())
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-primary border-0 rounded-pill px-3 shadow-sm">
+                    <i class="bi bi-person-gear me-1"></i> Area Admin
+                </a>
+                @else
                 <a href="{{ route('login') }}" class="btn btn-link text-decoration-none text-dark me-2">Accedi</a>
                 <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-4">Registrati</a>
-                @if(Auth::check())
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-link text-decoration-none text-dark me-2">Admin</a>
                 @endif
             </div>
         </div>

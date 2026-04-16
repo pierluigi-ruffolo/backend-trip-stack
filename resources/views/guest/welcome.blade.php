@@ -13,12 +13,19 @@
                 Pianifica, cataloga e amministra destinazioni internazionali in un'unica interfaccia sicura.
             </p>
             <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+                @if(Auth::check())
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm">
+                    Area Admin
+                </a>
+
+                @else
                 <a href="{{ route('login') }}" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm">
                     Accedi al Pannello
                 </a>
                 <a href="{{ route('register') }}" class="btn btn-outline-dark btn-lg rounded-pill px-5">
                     Registrati
                 </a>
+                @endif
             </div>
         </div>
         <div class="col-lg-6 text-center">
