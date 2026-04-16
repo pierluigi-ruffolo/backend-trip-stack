@@ -6,7 +6,7 @@ use App\Models\Country;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class countriestableSeeder extends Seeder
+class CountriestableSeeder extends Seeder
 {
 
     public function run(): void
