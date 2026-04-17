@@ -5,24 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CountryController extends Controller
 {
-
+    private $continents = ['Africa', 'America', 'Antartide', 'Asia', 'Europa', 'Oceania'];
     public function index()
     {
         $countries =  Country::withCount('destinations')->get();
-
         return view('admin.countries.index', compact('countries'));
     }
-
-
-
 
     public function create()
     {
 
-        $continents = Country::all();
+        $continents = $this->continents;
         return view('admin.countries.create', compact('continents'));
     }
 
@@ -59,7 +56,7 @@ class CountryController extends Controller
     public function edit(Country $country)
     {
 
-        $continents = Country::all();
+        $continents = $this->continents;
         return view('admin.countries.edit', compact('country', 'continents'));
     }
 
@@ -80,5 +77,15 @@ class CountryController extends Controller
     }
 
 
-    public function destroy(string $id) {}
+    public function destroy(Country $country)
+    {
+
+        foreach ($country->destinations as $destination) {
+            if ($destination->cover_image) {
+                Storage::delete($destination->cover_image);
+            }
+        }
+        $country->delete();
+        return redirect()->route('admin.countries.index');
+    }
 }

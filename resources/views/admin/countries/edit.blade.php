@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container py-5">
     <div class="row mb-4">
@@ -10,7 +9,6 @@
             <h2 class="fw-bold text-dark">Aggiorna Paese</h2>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card border-0 shadow-sm">
@@ -32,9 +30,9 @@
                                 <select name="continent" class="form-select form-select-lg border-2 shadow-none" id="continent">
                                     <option selected disabled>Scegli...</option>
                                     @foreach($continents as $continent)
-                                    <option value="{{ $continent->continent }}"
-                                        {{ $country->continent == $continent->continent ? 'selected' : '' }}>
-                                        {{ $continent->continent }}
+                                    <option value="{{ $continent}}"
+                                        {{ $country->continent == $continent ? 'selected' : '' }}>
+                                        {{ $continent }}
                                     </option> @endforeach
                                 </select>
                                 @error('continent')

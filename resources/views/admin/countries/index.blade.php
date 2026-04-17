@@ -54,11 +54,51 @@
                                     <a href="{{route('admin.countries.edit', $country)}}" class="btn btn-outline-warning btn-sm px-3">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <a href="#" class="btn btn-outline-danger btn-sm px-3">
+                                    <button type="button" class="btn btn-outline-danger btn-sm px-3" data-bs-toggle="modal" data-bs-target="#{{$country->id}}">
                                         <i class="bi bi-trash"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </td>
+                            <!-- Modal -->
+                            <div class="modal fade" id="{{$country->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content border-0 shadow">
+
+                                        <div class="modal-header bg-danger bg-opacity-10 border-bottom-0 pb-0">
+                                            <h5 class="modal-title fw-bold text-danger" id="deleteModalLabel">
+                                                <i class="bi bi-exclamation-triangle-fill me-2"></i>Conferma Eliminazione
+                                            </h5>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
+                                        <div class="modal-body py-4">
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <i class="bi bi-trash3 text-danger fs-1 opacity-25"></i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <p class="mb-1 fw-bold text-dark">Stai per eliminare il paese: <span class="text-danger">"{{ $country->name }}"</span></p>
+                                                    <p class="mb-0 text-muted small">
+                                                        L'azione è irreversibile. Tutte le destinazioni e i dati associati a questa nazione verranno rimossi permanentemente dal database.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer border-top-0 pt-0">
+                                            <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Annulla</button>
+
+                                            <form action="{{ route('admin.countries.destroy', $country) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger px-4 shadow-sm fw-bold">
+                                                    Sì, elimina definitivamente
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end Modal -->
                         </tr>
                         @endforeach
                     </tbody>

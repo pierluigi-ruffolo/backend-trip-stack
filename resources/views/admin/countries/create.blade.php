@@ -32,7 +32,7 @@
                                 <select name="continent" class="form-select form-select-lg border-2 shadow-none" id="continent">
                                     <option selected disabled>Scegli...</option>
                                     @foreach($continents as $continent)
-                                    <option value="{{$continent->continent}}">{{$continent->continent}}</option>
+                                    <option value="{{$continent}}">{{$continent}}</option>
                                     @endforeach
                                 </select>
                                 @error('continent')
