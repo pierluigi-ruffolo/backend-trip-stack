@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <hr class="text-muted opacity-25">
-                    <a href="#" class="text-decoration-none small text-success fw-semibold">
+                    <a href="{{route('admin.countries.index')}}" class="text-decoration-none small text-success fw-semibold">
                         Vedi nazioni <i class="bi bi-arrow-right ms-1"></i>
                     </a>
                 </div>
@@ -98,7 +98,7 @@
                                     {{ $destination->country->name }}
                                 </span>
                             </td>
-                            <td>€{{ number_format($destination->price_person, 2, ',', '.') }}</td>
+                            <td>{{ $destination->price_person ? '€' . number_format($destination->price_person, 2, ',', '.') : '€ -' }}</td>
                             <td class="text-end pe-4">
                                 <a href="#" class="btn btn-sm btn-light">
                                     <i class="bi bi-eye"></i>
@@ -113,7 +113,7 @@
     </div>
     <div class="card border-0 shadow-sm mt-4">
         <div class="card-body">
-            <h2 class="fw-bold mb-3 text-uppercase small text-muted fs-5">
+            <h2 class="fw-bold mb-3 text-uppercase small fw-bold">
                 <i class="bi bi-fire me-2 text-danger"></i>Tag più popolari
             </h2>
             <div class="d-flex flex-wrap gap-2">
@@ -122,7 +122,7 @@
                     style="background-color: {{ $tag->color }}15; color: {{ $tag->color }}; border: 1px solid {{ $tag->color }}40;">
                     <i class="bi bi-tag-fill me-2"></i>
                     {{ $tag->name }}
-                    <span class="ms-2 opacity-75 small ">({{ $tag->destinations_count }})</span>
+                    <span class="ms-2">({{ $tag->destinations_count }})</span>
                 </span>
                 @endforeach
             </div>
