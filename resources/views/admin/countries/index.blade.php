@@ -7,7 +7,7 @@
             <h2 class="fw-bold text-dark">Paesi</h2>
             <p class="text-muted mb-0">Gestione e monitoraggio delle nazioni nel sistema</p>
         </div>
-        <a href="#" class="btn btn-primary px-4 py-2">
+        <a href="{{route('admin.countries.create')}}" class="btn btn-primary px-4 py-2">
             <i class="bi bi-plus-lg me-2"></i>Nuovo Paese
         </a>
     </div>
@@ -41,14 +41,14 @@
                                     {{ $country->destinations_count }}
                                 </span>
                                 @else
-                                <span class="text-muted small fst-italic">
-                                    nessuna
+                                <span class="badge rounded-pill bg-light text-secondary border fw-normal">
+                                    <i class="bi bi-dash-circle me-1"></i> Nessuna descrizione
                                 </span>
                                 @endif
                             </td>
                             <td class="pe-4 text-end">
                                 <div class="btn-group shadow-sm" role="group">
-                                    <a href="#" class="btn btn-outline-info btn-sm px-3">
+                                    <a href="{{route('admin.countries.show', $country)}}" class="btn btn-outline-info btn-sm px-3">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                     <a href="#" class="btn btn-outline-warning btn-sm px-3">

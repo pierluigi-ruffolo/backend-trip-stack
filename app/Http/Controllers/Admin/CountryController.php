@@ -18,38 +18,49 @@ class CountryController extends Controller
 
 
 
-    public function create() {}
 
-
-    public function store(Request $request) {}
-
-
-    public function show(string $id)
+    public function create()
     {
-        //
+
+        $continents = Country::all();
+        return view('admin.countries.create', compact('continents'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+
+    public function store(Request $request)
     {
-        //
+        $request->merge([
+            'name' => ucfirst(strtolower($request->name))
+        ]);
+
+        $validated =   $request->validate([
+            'name' => 'required|unique:countries|max:255',
+            'continent' => 'required',
+            'description' => 'nullable'
+        ]);
+        $newCountry = new Country();
+        $newCountry->name = $validated['name'];
+        $newCountry->continent = $validated['continent'];
+        $newCountry->description = $validated['description'];
+        $newCountry->save();
+        return redirect()->route('admin.countries.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function show(Country $country)
+
     {
-        //
+
+        return view('admin.countries.show', compact('country'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+
+    public function edit(string $id) {}
+
+
+    public function update(Request $request, string $id) {}
+
+
+    public function destroy(string $id) {}
 }
