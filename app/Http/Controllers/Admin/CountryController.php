@@ -35,7 +35,7 @@ class CountryController extends Controller
         ]);
 
         $validated =   $request->validate([
-            'name' => 'required|unique:countries|max:255',
+            'name' => 'required|unique:countries,name|max:255',
             'continent' => 'required',
             'description' => 'nullable'
         ]);
@@ -56,10 +56,28 @@ class CountryController extends Controller
     }
 
 
-    public function edit(string $id) {}
+    public function edit(Country $country)
+    {
+
+        $continents = Country::all();
+        return view('admin.countries.edit', compact('country', 'continents'));
+    }
 
 
-    public function update(Request $request, string $id) {}
+    public function update(Request $request, Country $country)
+    {
+        $request->merge(['name' => ucfirst(strtolower($request->name))]);
+        $validated =   $request->validate([
+            'name' => 'required|max:255|unique:countries,name,' . $country->id,
+            'continent' => 'required',
+            'description' => 'nullable'
+        ]);
+        $country->name = $validated['name'];
+        $country->continent = $validated['continent'];
+        $country->description = $validated['description'];
+        $country->update();
+        return redirect()->route('admin.countries.show', $country);
+    }
 
 
     public function destroy(string $id) {}

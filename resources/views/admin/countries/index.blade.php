@@ -51,7 +51,7 @@
                                     <a href="{{route('admin.countries.show', $country)}}" class="btn btn-outline-info btn-sm px-3">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                    <a href="#" class="btn btn-outline-warning btn-sm px-3">
+                                    <a href="{{route('admin.countries.edit', $country)}}" class="btn btn-outline-warning btn-sm px-3">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                     <a href="#" class="btn btn-outline-danger btn-sm px-3">
