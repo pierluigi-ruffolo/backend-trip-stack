@@ -6,11 +6,11 @@
             <i class="bi bi-arrow-left me-1"></i> Torna alla lista
         </a>
         <div class="d-flex gap-2">
-            <a href="{{route('admin.countries.edit', $country)}}" class="btn btn-outline-warning">
-                <i class="bi bi-pencil me-1"></i> Modifica
+            <a href="{{route('admin.countries.edit', $country)}}" class="btn btn-outline-warning px-4 shadow-sm fw-bold">
+                <i class="bi bi-pencil me-2"></i> Modifica
             </a>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-delete">
-                <i class="bi bi-trash me-1"></i> Elimina
+            <button type="button" class="btn btn-outline-danger px-4 shadow-sm fw-bold" data-bs-toggle="modal" data-bs-target="#modal-delete">
+                <i class="bi bi-trash me-2"></i> Elimina
             </button>
         </div>
     </div>

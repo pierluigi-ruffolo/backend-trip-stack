@@ -140,7 +140,7 @@
                         <a href="#" class="btn btn-primary me-2">
                             <i class="bi bi-plus-circle me-1"></i> Destinazione
                         </a>
-                        <a href="#" class="btn btn-outline-light">
+                        <a href="{{route('admin.countries.create')}}" class="btn btn-outline-light">
                             <i class="bi bi-plus-circle me-1"></i> Paese
                         </a>
                     </div>

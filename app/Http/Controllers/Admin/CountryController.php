@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 class CountryController extends Controller
 {
     private $continents = ['Africa', 'America', 'Antartide', 'Asia', 'Europa', 'Oceania'];
+
+
     public function index()
     {
         $countries =  Country::withCount('destinations')->get();
