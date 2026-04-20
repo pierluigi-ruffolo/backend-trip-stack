@@ -30,7 +30,8 @@
                         <tr>
                             <td class="ps-4">
                                 <div class="rounded-circle overflow-hidden border shadow-sm" style="width: 50px; height: 50px;">
-                                    <img src="{{ asset('img/default-placeholder.png') }}" alt="Immagine di default" class="w-100 h-100 object-fit-cover">
+
+                                    <img src="{{$destination->cover_image ? asset('storage/' . $destination->cover_image) : asset('img/default-placeholder.png') }}" alt="Immagine di default" class="w-100 h-100 object-fit-cover">
                                 </div>
                             </td>
                             <td>
@@ -53,10 +54,41 @@
                                 <div class="btn-group shadow-sm border rounded">
                                     <a href="{{route ('admin.destinations.show', $destination)}}" class="btn btn-white btn-sm px-3" title="Vedi"><i class="bi bi-eye text-primary"></i></a>
                                     <a href="#" class="btn btn-white btn-sm px-3 border-start border-end" title="Modifica"><i class="bi bi-pencil text-warning"></i></a>
-                                    <a href="#" class="btn btn-white btn-sm px-3 text-danger" title="Elimina"><i class="bi bi-trash"></i></a>
+                                    <button class="btn btn-white btn-sm px-3 text-danger" data-bs-toggle="modal" data-bs-target="#{{$destination->id}}" title="Elimina"><i class="bi bi-trash"></i></a>
                                 </div>
                             </td>
                         </tr>
+                        <!-- modal -->
+                        <div class="modal fade" id="{{$destination->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content border-0 shadow">
+                                    <div class="modal-header bg-danger bg-opacity-10 border-bottom-0 pb-0">
+                                        <h5 class="modal-title fw-bold text-danger" id="deleteModalLabel">
+                                            <i class="bi bi-exclamation-triangle-fill me-2"></i>Conferma Eliminazione
+                                        </h5>
+                                        <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body py-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-shrink-0">
+                                                <i class="bi bi-trash3 text-danger fs-1 opacity-25"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <p class="mb-1 fw-bold text-dark">Stai per eliminare la destinazione: <span class="text-danger">"{{ $destination->title }}"</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer border-top-0 pt-0">
+                                        <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Annulla</button>
+                                        <form action="{{route ('admin.destinations.destroy', $destination)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger px-4 shadow-sm fw-bold">Elimina</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </tbody>
                 </table>

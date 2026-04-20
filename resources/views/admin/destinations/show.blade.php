@@ -11,8 +11,8 @@
             <a href="#" class="btn btn-outline-warning px-4  shadow-sm fw-bold">
                 <i class="bi bi-pencil me-2"></i>Modifica
             </a>
-            <button class="btn btn-outline-danger px-4 shadow-sm fw-bold">
-                <i class="bi bi-trash me-2"></i>Elimina
+            <button type="button" class="btn btn-outline-danger px-4 shadow-sm fw-bold" data-bs-toggle="modal" data-bs-target="#modal-delete">
+                <i class="bi bi-trash me-2"></i> Elimina
             </button>
         </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="row mb-5">
         <div class="col-12">
             <div class="rounded-4 overflow-hidden shadow-sm position-relative" style="height: 400px;">
-                <img src="{{asset('img/default-placeholder.png')}}" alt="Cover Banner" class="w-100 h-100 object-fit-cover">
+                <img src="{{$destination->cover_image ? asset('storage/' . $destination->cover_image) : asset('img/default-placeholder.png') }}" alt="Immagine di default" class="w-100 h-100 object-fit-cover">
                 <div class="position-absolute bottom-0 start-0 p-4 w-100 bg-gradient-dark">
                     <div class="d-flex gap-2">
                         @forelse ($destination->tags as $tag)
@@ -105,6 +105,41 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal-delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+
+            <div class="modal-header bg-danger bg-opacity-10 border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold text-danger" id="deleteModalLabel">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Conferma Eliminazione
+                </h5>
+                <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body py-4">
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0">
+                        <i class="bi bi-trash3 text-danger fs-1 opacity-25"></i>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <p class="mb-1 fw-bold text-dark">Stai per eliminare la destinazione: <span class="text-danger">"{{ $destination->title }}"</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-top-0 pt-0">
+                <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Annulla</button>
+                <form action="{{route ('admin.destinations.destroy', $destination)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-outline-danger px-4 shadow-sm fw-bold">
+                        <i class="bi bi-trash me-2"></i>Elimina
+                    </button>
+                </form>
             </div>
         </div>
     </div>
