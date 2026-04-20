@@ -34,7 +34,7 @@ class CountryController extends Controller
         ]);
 
         $validated =   $request->validate([
-            'name' => 'required|unique:countries,name|max:255',
+            'name' => 'required|unique:countries,name',
             'continent' => 'required',
             'description' => 'nullable'
         ]);

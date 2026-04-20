@@ -1,18 +1,25 @@
 @extends('layouts.app')
 @section('content')
 <div class="container py-5">
-    <div class="d-flex justify-content-between align-items-start mb-4">
+    <div class="d-flex justify-content-between gap-2">
         <div>
-            <h1 class="fw-bold text-dark mb-1">{{$destination->title}}</h1>
-            <p class="text-muted">Slug: <span class="badge bg-light text-secondary border">{{$destination->slug}}</span></p>
+            <a href="{{route('admin.destinations.index')}}" class="btn btn-link text-secondary p-0 text-decoration-none">
+                <i class="bi bi-arrow-left me-1"></i> Torna alla lista
+            </a>
         </div>
         <div class="d-flex gap-2">
-            <a href="#" class="btn btn-outline-warning px-4 shadow-sm fw-bold">
+            <a href="#" class="btn btn-outline-warning px-4  shadow-sm fw-bold">
                 <i class="bi bi-pencil me-2"></i>Modifica
             </a>
             <button class="btn btn-outline-danger px-4 shadow-sm fw-bold">
                 <i class="bi bi-trash me-2"></i>Elimina
             </button>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+            <h1 class="fw-bold text-dark mb-1">{{$destination->title}}</h1>
+            <p class="text-muted">Slug: <span class="badge bg-light text-secondary border">{{$destination->slug}}</span></p>
         </div>
     </div>
     <div class="row mb-5">
@@ -78,9 +85,7 @@
                             <span class="text-muted small text-uppercase d-block mb-1">Prezzo a Persona</span>
                             <h2 class="text-success fw-bold mb-0"> € {{$destination->price_person ?? "N/D"}}</h2>
                         </div>
-
                         <hr class="opacity-25">
-
                         <div class="py-3 d-flex align-items-center">
                             <div class="bg-primary bg-opacity-10 p-3 rounded-3 me-3">
                                 <i class="bi bi-calendar-event text-primary fs-4"></i>

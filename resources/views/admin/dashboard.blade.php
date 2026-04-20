@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <hr class="text-muted opacity-25">
-                    <a href="#" class="text-decoration-none small text-primary fw-semibold">
+                    <a href="{{route('admin.destinations.index')}}" class="text-decoration-none small text-primary fw-semibold">
                         Gestisci elenco <i class="bi bi-arrow-right ms-1"></i>
                     </a>
                 </div>
@@ -98,9 +98,9 @@
                                     {{ $destination->country->name }}
                                 </span>
                             </td>
-                            <td>{{ $destination->price_person ? '€' . number_format($destination->price_person, 2, ',', '.') : '€ -' }}</td>
+                            <td> € {{$destination->price_person ?? "N/D"}}</td>
                             <td class="text-end pe-4">
-                                <a href="#" class="btn btn-sm btn-light">
+                                <a href="{{route ('admin.destinations.show', $destination)}}" class="btn btn-sm btn-light">
                                     <i class="bi bi-eye"></i>
                                 </a>
                             </td>

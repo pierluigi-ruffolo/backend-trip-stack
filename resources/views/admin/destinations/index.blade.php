@@ -7,7 +7,7 @@
             <h2 class="fw-bold mb-0">Gestione Destinazioni</h2>
             <p class="text-muted">Visualizza e gestisci tutti i pacchetti di viaggio</p>
         </div>
-        <a href="#" class="btn btn-primary px-4 shadow-sm">
+        <a href="{{route('admin.destinations.create')}}" class="btn btn-primary px-4 shadow-sm">
             <i class="bi bi-plus-lg me-2"></i>Aggiungi Destinazione
         </a>
     </div>
