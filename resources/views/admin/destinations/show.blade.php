@@ -8,7 +8,7 @@
             </a>
         </div>
         <div class="d-flex gap-2">
-            <a href="#" class="btn btn-outline-warning px-4  shadow-sm fw-bold">
+            <a href="{{route ('admin.destinations.edit', $destination)}}" class="btn btn-outline-warning px-4  shadow-sm fw-bold">
                 <i class="bi bi-pencil me-2"></i>Modifica
             </a>
             <button type="button" class="btn btn-outline-danger px-4 shadow-sm fw-bold" data-bs-toggle="modal" data-bs-target="#modal-delete">

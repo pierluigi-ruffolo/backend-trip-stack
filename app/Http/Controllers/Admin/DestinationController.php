@@ -65,6 +65,7 @@ class DestinationController extends Controller
             $newDestination->tags()->attach($validated['tags']);
         }
 
+
         return redirect()->route('admin.destinations.index');
     }
 
@@ -77,10 +78,18 @@ class DestinationController extends Controller
 
 
 
-    public function edit(string $id) {}
+    public function edit(Destination $destination)
+    {
+
+        $countries = Country::all();
+        $tags = Tag::all();
 
 
-    public function update(Request $request, string $id) {}
+        return view('admin.destinations.edit', compact('destination', 'countries', 'tags'));
+    }
+
+
+    public function update(Request $request, Destination  $destination) {}
 
 
 

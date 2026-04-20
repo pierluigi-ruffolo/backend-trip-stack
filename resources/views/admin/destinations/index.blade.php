@@ -53,7 +53,7 @@
                             <td class="text-end pe-4">
                                 <div class="btn-group shadow-sm border rounded">
                                     <a href="{{route ('admin.destinations.show', $destination)}}" class="btn btn-white btn-sm px-3" title="Vedi"><i class="bi bi-eye text-primary"></i></a>
-                                    <a href="#" class="btn btn-white btn-sm px-3 border-start border-end" title="Modifica"><i class="bi bi-pencil text-warning"></i></a>
+                                    <a href="{{route ('admin.destinations.edit', $destination)}}" class="btn btn-white btn-sm px-3 border-start border-end" title="Modifica"><i class="bi bi-pencil text-warning"></i></a>
                                     <button class="btn btn-white btn-sm px-3 text-danger" data-bs-toggle="modal" data-bs-target="#{{$destination->id}}" title="Elimina"><i class="bi bi-trash"></i></a>
                                 </div>
                             </td>
