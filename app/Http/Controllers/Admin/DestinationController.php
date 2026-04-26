@@ -20,8 +20,6 @@ class DestinationController extends Controller
     }
 
 
-
-
     public function create()
     {
         $countries = Country::all();
@@ -89,7 +87,44 @@ class DestinationController extends Controller
     }
 
 
-    public function update(Request $request, Destination  $destination) {}
+    public function update(Request $request, Destination  $destination)
+    {
+        $request->merge([
+            'title' => ucfirst(strtolower($request->title))
+        ]);
+
+        $validated = $request->validate([
+            'title' => 'required|unique:destinations,title,' . $destination->id,
+            'country_id' => 'required|exists:countries,id',
+            'cover_image' => 'nullable|image',
+            'description' => 'nullable',
+            'price_person' => 'nullable|numeric',
+            'duration' => 'nullable|integer',
+            'tags' => 'nullable|array'
+        ]);
+
+        $destination->title = $validated['title'];
+        $destination->country_id = $validated['country_id'];
+        $destination->description = $validated['description'];
+        $destination->price_person = $validated['price_person'];
+        $destination->duration = $validated['duration'];
+
+        if (isset($validated['cover_image'])) {
+            Storage::disk('public')->delete($destination->cover_image);
+            $path =  Storage::disk('public')->putFile('cover_images', $validated['cover_image']);
+            $destination->cover_image =  $path;
+        }
+
+        if (isset($validated['tags'])) {
+            $destination->tags()->sync($validated['tags']);
+        } else {
+            $destination->tags()->detach();
+        }
+
+        $destination->update();
+
+        return redirect()->route('admin.destinations.show', $destination);
+    }
 
 
 

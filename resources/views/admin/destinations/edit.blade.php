@@ -100,9 +100,11 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100 py-3 shadow fw-bold">
-                    <i class="bi bi-cloud-arrow-up me-2"></i>Modifica Destinatione
-                </button>
+                <div class="d-flex justify-content-end align-items-center gap-3">
+                    <button type="submit" class="btn btn-warning px-5 py-2 fw-bold shadow-sm">
+                        <i class="bi bi-check2-all me-2"></i>Aggiorna Destinazione
+                    </button>
+                </div>
             </div>
         </div>
     </form>

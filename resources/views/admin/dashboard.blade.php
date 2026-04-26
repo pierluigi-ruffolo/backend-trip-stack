@@ -137,7 +137,7 @@
                         <p class="text-light opacity-75 mb-md-0">Aggiungi subito una nuova destinazione o un nuovo paese per aggiornare il tuo catalogo.</p>
                     </div>
                     <div class="col-12 col-lg-4 text-md-end">
-                        <a href="#" class="btn btn-primary me-2">
+                        <a href="{{route('admin.destinations.create')}}" class="btn btn-primary me-2">
                             <i class="bi bi-plus-circle me-1"></i> Destinazione
                         </a>
                         <a href="{{route('admin.countries.create')}}" class="btn btn-outline-light">

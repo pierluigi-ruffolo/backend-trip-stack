@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DestinationController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Guest\WelcomeController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Country;
@@ -20,6 +21,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('countries', CountryController::class);
         Route::resource('destinations', DestinationController::class);
+        Route::resource('tags', TagController::class);
     });
 
 

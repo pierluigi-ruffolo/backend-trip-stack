@@ -6,7 +6,7 @@
             <a href="{{route('admin.countries.index')}}" class="btn btn-link text-secondary p-0 text-decoration-none mb-3">
                 <i class="bi bi-arrow-left me-1"></i> Torna alla lista
             </a>
-            <h2 class="fw-bold text-dark">Aggiorna Paese</h2>
+            <h2 class="fw-bold text-dark">Modifica Paese</h2>
         </div>
     </div>
     <div class="row">
@@ -48,8 +48,8 @@
                         </div>
                         <hr class="my-5 opacity-25">
                         <div class="d-flex justify-content-end align-items-center gap-3">
-                            <button type="submit" class="btn btn-primary px-5 py-2 fw-bold shadow-sm">
-                                <i class="bi bi-cloud-arrow-up me-2"></i>Salva Paese
+                            <button type="submit" class="btn btn-warning px-5 py-2 fw-bold shadow-sm">
+                                <i class="bi bi-check2-all me-2"></i>Aggiorna Paese
                             </button>
                         </div>
                     </form>

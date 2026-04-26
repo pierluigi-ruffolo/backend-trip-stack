@@ -20,7 +20,7 @@
                 <li><a href="{{ route('admin.dashboard') }}"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
                 <li><a href="{{route('admin.destinations.index')}}"><i class="bi bi-geo-alt me-2"></i> Destinazioni</a></li>
                 <li><a href="{{route('admin.countries.index')}}"><i class="bi bi-globe me-2"></i> Paesi</a></li>
-                <li><a href="#"><i class="bi bi-tags me-2"></i> tag</a></li>
+                <li><a href="{{route('admin.tags.index')}}"><i class="bi bi-tags me-2"></i> tag</a></li>
             </ul>
 
             <div class="user-section">
