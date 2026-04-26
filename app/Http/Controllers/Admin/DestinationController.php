@@ -110,7 +110,9 @@ class DestinationController extends Controller
         $destination->duration = $validated['duration'];
 
         if (isset($validated['cover_image'])) {
-            Storage::disk('public')->delete($destination->cover_image);
+            if ($destination->cover_image) {
+                Storage::disk('public')->delete($destination->cover_image);
+            }
             $path =  Storage::disk('public')->putFile('cover_images', $validated['cover_image']);
             $destination->cover_image =  $path;
         }
