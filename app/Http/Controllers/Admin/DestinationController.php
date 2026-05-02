@@ -104,6 +104,7 @@ class DestinationController extends Controller
         ]);
 
         $destination->title = $validated['title'];
+        $destination->slug = Str::slug($validated['title'], '-');
         $destination->country_id = $validated['country_id'];
         $destination->description = $validated['description'];
         $destination->price_person = $validated['price_person'];

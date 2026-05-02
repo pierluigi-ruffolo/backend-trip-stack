@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
 
-
-
 Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
@@ -23,7 +21,6 @@ Route::middleware(['auth', 'verified'])
         Route::resource('destinations', DestinationController::class);
         Route::resource('tags', TagController::class);
     });
-
 
 
 
